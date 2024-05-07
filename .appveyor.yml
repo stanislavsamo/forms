@@ -20,27 +20,18 @@ test_script:
   - npm run lint # скрипт тестирования
   - npm run test
 
-# deploy_script: # скрипт развёртывания
-#   - git config --global credential.helper store
-#   - git config --global user.name AppVeyor
-#   - git config --global user.email ci@appveyor.com
-#   - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
-#   - npx push-dir --dir=dist --branch=gh-pages --force --verbose
+deploy_script: # скрипт развёртывания
+  - git config --global credential.helper store
+  - git config --global user.name AppVeyor
+  - git config --global user.email ci@appveyor.com
+  - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
 
 # deploy_script:
 #   - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
-#   - git config --global credential.helper store # Опционально, если предпочитаете хранить учетные данные в .git-credentials
-#   - git checkout -b gh-pages # Создать новую ветку gh-pages
-#   - git add -f dist # Добавить содержимое каталога dist
-#   - git commit -m "Deploy to gh-pages" # Закоммитить изменения
-#   - git push origin gh-pages --force # Отправить изменения на ветку gh-pages
-
-deploy_script:
-  - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
-  - git config --global credential.helper store
-  - git config --global user.email "ci@appveyor.com"
-  - git config --global user.name "AppVeyor"
-  - git checkout -b gh-pages
-  - git add -f dist
-  - git commit -m "Deploy to gh-pages"
-  - git push origin gh-pages --force
+#   - git config --global credential.helper store
+#   - git config --global user.email "ci@appveyor.com"
+#   - git config --global user.name "AppVeyor"
+#   - git checkout -b gh-pages
+#   - git add -f dist
+#   - git commit -m "Deploy to gh-pages"
+#   - git push origin gh-pages --force
